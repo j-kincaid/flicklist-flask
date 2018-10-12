@@ -62,6 +62,14 @@ crossoff_form = """
 def crossoff_movie():
     crossed_off_movie = request.form['crossed-off-movie']    
 
+    # build response content
+    crossed_off_element = "<strike>" + crossed_off_movie + "</strike>"
+    sentence = crossed_off_element + " has been stricken from your Watchlist!"
+    content = page_header + "<p>" + sentence + "</p>" + page_footer
+
+    return content
+
+
 # TODO:
 # modify the crossoff_form above to use a dropdown (<select>) instead of
 # an input text field (<input type="text"/>)

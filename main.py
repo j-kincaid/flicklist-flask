@@ -41,15 +41,14 @@ crossoff_form = """
     <form action="/crossoff" method="post">
         <label for="crossoff_movie">
             I want to cross off
-            <input type="text" id="crossoff_movie" name="crossoff_movie" font-style="strike"/>
-            from my Watchlist.
-        </label>
         <select name="crossoff_movie">
             <option value="movie0">Antman</option>
             <option value="movie1">Wonder Woman</option>
             <option value="movie2">Wolverine</option>
             <option value="movie3">Black Panther</option>
         <input type="submit" value="Remove It"/>
+            from my Watchlist.
+        </label>
     </form>
 """
 
@@ -91,7 +90,7 @@ def index():
     edit_header = "<h2>Edit My Watchlist</h2>"
 
     # build the response string
-    content = page_header + edit_header + add_form + page_footer
+    content = page_header + edit_header + add_form + crossoff_form + page_footer
 
     return content
 

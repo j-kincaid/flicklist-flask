@@ -38,8 +38,21 @@ add_form = """
 
 # a form for crossing off watched movies
 crossoff_form = """
-
+    <form action="/crossoff" method="post">
+        <label for="crossoff_movie">
+            I want to cross off
+            <input type="text" id="crossoff_movie" name="crossoff_movie" font-style="strike"/>
+            from my Watchlist.
+        </label>
+        <select name="crossoff_movie">
+            <option value="movie0">Antman</option>
+            <option value="movie1">Wonder Woman</option>
+            <option value="movie2">Wolverine</option>
+            <option value="movie3">Black Panther</option>
+        <input type="submit" value="Remove It"/>
+    </form>
 """
+
 
 # TODO:
 # Finish filling in the function below so that the user will see a message like:

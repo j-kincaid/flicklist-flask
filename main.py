@@ -41,11 +41,11 @@ crossoff_form = """
     <form action="/crossoff" method="post">
         <label for="crossoff_movie">
             I want to cross off
-        <select name="crossoff_movie">
+        <select name="apple">
             <option value="movie0">Antman</option>
             <option value="movie1">Wonder Woman</option>
-            <option value="movie2">Wolverine</option>
-            <option value="movie3">Black Panther</option>
+            <option value="wolverine">Wolverine</option>
+            <option value="blackpanther">Black Panther</option>
         <input type="submit" value="Remove It"/>
             from my Watchlist.
         </label>
@@ -58,8 +58,9 @@ crossoff_form = """
 # "Star Wars has been crossed off your watchlist".
 # And create a route above the function definition to receive and handle the request from 
 # your crossoff_form.
+@app.route("/crossoff", methods=['POST'])
 def crossoff_movie():
-    crossed_off_movie = request.form['crossed-off-movie']    
+    crossed_off_movie = request.form['apple']    
 
     # build response content
     crossed_off_element = "<strike>" + crossed_off_movie + "</strike>"

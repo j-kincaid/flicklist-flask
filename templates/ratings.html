@@ -10,17 +10,17 @@
       <form action="/rating-confirmation" method="post">
         <label>
           My Rating:
+
+          {{ movie }}
+          <input type="hidden" name="rated-movie" value="{{ movie }}"/>
           <select name="rating">
-            <!-- TODO: If the user has rated a movie, make the select box default to that rating when they visit this page.
-                 Hint: How can you use jinja2's templates to include a tag (or text) only
-                 if a server side condition is met? 
-                so you'll use the select tag to create a drop down menu.  You'll be hardcoding the list of movies watched so you can generate a list using the for statement in html.  For each item generated, you'll include that select tag and a submit button that all just point to a html that confirms the rating.  You don't need to place it into any database or list at this time.  Just getting used to creating something like that is the focus. -->
-            {% for rating in ["How was it?", "*", "**", "***", "****", "*****"] %}
-              <option>{{ rating }}</option>
-            {% endfor %}
+              <option>How was it?</option>
+              <option value="*">*</option>
+              <option value="**">**</option>
+              <option value="***">***</option>
+              <option value="****">****</option>
+              <option value="*****">*****</option>
           </select>
-        </label>
-        <input type="hidden" name="movie_id" value="{{ movie.id }}"/>
         <input type="submit" value="Rate it!"/> 
       </form>
     </li>
@@ -28,3 +28,30 @@
 </ul>
 
 {% endblock %}
+<!-- 
+
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Movies I Have Watched</h2>
+<ul>
+    {% for movie in watchedlist %}
+    <li>
+        <form action="/rating-confirmation" method="post">
+            {{ movie }}
+            <input type="hidden" name="rated-movie" value="{{ movie }}"/>
+            <select name="rating">
+                <option>How was it?</option>
+                <option value="*">*</option>
+                <option value="**">**</option>
+                <option value="***">***</option>
+                <option value="****">****</option>
+                <option value="*****">*****</option>
+            </select>
+            <input type="submit" value="Rate It!" />
+        </form>
+
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %} -->

@@ -32,6 +32,16 @@ def get_current_watchlist():
 # in this list: ["How was it?", "*", "**", "***", "****", "*****"]
 # And with a button that says "Rate It!" to submit the user's rating.
 # Give this form the action of "/rating-confirmation" and the method of post.
+@app.route("/rating-confirmation", methods=['POST'])
+def rate_movie():
+    # grab the values from the form
+    movie = request.form.get("rated-movie")
+    rating = request.form.get("rating")
+
+    #render the confirmation page
+    return render_template("rating-confirmation.html", movie=movie, rating=rating)
+	
+	
 
 # TODO: 
 # Add a function, movie_ratings, to handle a get request and render the template at "/ratings"

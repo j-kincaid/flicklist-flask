@@ -13,6 +13,7 @@ class Movie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120))
     watched = db.Column(db.Boolean)
+    ratings = db.Column(db.String(5))
     
     # TODO: add a ratings column to the Movie table
 
@@ -57,7 +58,9 @@ def rate_movie():
 
     # if we didn't redirect by now, then all is well
     
-    # TODO: make a persistent change to the model so that you STORE the rating in the database
+    # TODO: make a persistent change to the model so that you STORE the rating in the database  
+    
+
     # (Note: the next TODO is in templates/ratings.html)
     
     return render_template('rating-confirmation.html', movie=movie, rating=rating)

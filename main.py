@@ -5,7 +5,7 @@ import cgi
 app = Flask(__name__)
 app.config['DEBUG'] = True      # displays runtime errors in the browser, too
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://flicklist:MyNewPass@localhost:8889/flicklist'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://flicklist:greenenchiladas@localhost:8889/flicklist'
 app.config['SQLALCHEMY_ECHO'] = True
 
 db = SQLAlchemy(app)
@@ -14,6 +14,7 @@ class Movie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120))
     watched = db.Column(db.Boolean)
+    rating = db.Column(db.String(5))
 
     def __init__(self, name):
         self.name = name
@@ -33,13 +34,14 @@ terrible_movies = [
 
 def get_current_watchlist():
     # returns user's current watchlist -- a list of movies they want to see but haven't yet
+
+    # Here are going to get a list of movie objects instead of a list of strings:
     return Movie.query.all()
 
 def get_watched_movies():
     # For now, we are just pretending
     # returns the list of movies the user has already watched and crossed off
-    return [ "The Matrix", "The Princess Bride", "Buffy the Vampire Slayer" ]
-
+    return [ "The Matrix", "The Princess Bride", "Buffy the Vampire Slayer" ] 
 
 # Create a new route called rate_movie which handles a POST request on /rating-confirmation
 @app.route("/rating-confirmation", methods=['POST'])
